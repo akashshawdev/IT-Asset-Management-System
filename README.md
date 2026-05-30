@@ -8,10 +8,10 @@ Built as a personal project alongside my MSc in Software Engineering, inspired b
 
 ## Features
 
-- **Ticket Management** — Submit, filter, and resolve IT support tickets. Track by category, priority, and assignee.
-- **User Onboarding** — Register new employees, assign system permissions, and link workstations in one step.
-- **Workstation Configuration** — Track all office devices and run simulated automated setup scripts per device.
-- **Dashboard** — Overview of open/resolved tickets, pending onboardings, and resolution rate.
+- **Ticket Management** - Submit, filter, and resolve IT support tickets. Track by category, priority, and assignee.
+- **User Onboarding** - Register new employees, assign system permissions, and link workstations in one step.
+- **Workstation Configuration** - Track all office devices and run simulated automated setup scripts per device.
+- **Dashboard** - Overview of open/resolved tickets, pending onboardings, and resolution rate.
 
 ---
 
@@ -59,18 +59,18 @@ itops-servicedesk/
 
 ## What I'd add next
 
-- **Azure Active Directory integration** — sync users and permissions directly via Microsoft Graph API
-- **Email notifications** — alert assignees when a ticket is created or updated
-- **Role-based access control** — separate views for IT admins vs. regular staff
-- **Reporting** — weekly ticket volume charts, average resolution time tracking
-- **REST API** — expose endpoints so other internal tools can create tickets programmatically
+- **Azure Active Directory integration** - sync users and permissions directly via Microsoft Graph API
+- **Email notifications** - alert assignees when a ticket is created or updated
+- **Role-based access control** - separate views for IT admins vs. regular staff
+- **Reporting** - weekly ticket volume charts, average resolution time tracking
+- **REST API** - expose endpoints so other internal tools can create tickets programmatically
 
 ---
 
 ## Screenshots
 
-> Dashboard, Tickets, User Onboarding, and Workstation pages — all functional with real SQLite persistence.
+> Dashboard, Tickets, User Onboarding, and Workstation pages - all functional with real SQLite persistence.
 
 ---
 
-*Built by Akash Kumar Shaw — MSc Software Engineering, University of Europe for Applied Sciences*
+*Built by Akash Kumar Shaw - MSc Software Engineering, University of Europe for Applied Sciences*
