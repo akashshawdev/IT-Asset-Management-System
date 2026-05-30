@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block page_title %}Workstations{% endblock %}
+{% block content %}
+
+<div class="toolbar">
+  <div class="toolbar-info">{{ workstations | length }} devices tracked</div>
+</div>
+
+<div class="ws-grid">
+  {% for ws in workstations %}
+  <div class="ws-card {% if ws.status == 'Available' %}ws-available{% else %}ws-inuse{% endif %}">
+    <div class="ws-header">
+      <span class="ws-hostname">{{ ws.hostname }}</span>
+      <span class="badge badge-status-{{ ws.status | lower | replace(' ', '-') }}">{{ ws.status }}</span>
+    </div>
+    <div class="ws-detail"><span class="muted">OS</span> {{ ws.os }}</div>
+    <div class="ws-detail"><span class="muted">Assigned to</span> {{ ws.assigned_to or '—' }}</div>
+    <div class="ws-detail"><span class="muted">Last configured</span> {{ ws.last_configured or 'Never' }}</div>
+
+    <button class="btn-configure" data-id="{{ ws.id }}" onclick="runConfigure({{ ws.id }}, this)">
+      ▶ Run Configuration Script
+    </button>
+    <div id="log-{{ ws.id }}" class="config-log hidden"></div>
+  </div>
+  {% endfor %}
+</div>
+
+<script>
+function runConfigure(id, btn) {
+  btn.disabled = true;
+  btn.textContent = "Running...";
+  const log = document.getElementById("log-" + id);
+  log.classList.remove("hidden");
+  log.innerHTML = "";
+
+  const steps = [
+    "Connecting to workstation...",
+    "Checking OS version and updates...",
+    "Installing required software packages...",
+    "Configuring network drives and printers...",
+    "Syncing Azure AD policies...",
+    "Enabling endpoint protection...",
+    "Configuration complete ✓"
+  ];
+
+  let i = 0;
+  const interval = setInterval(() => {
+    if (i < steps.length) {
+      const line = document.createElement("div");
+      line.className = "log-line" + (i === steps.length - 1 ? " log-success" : "");
+      line.textContent = "> " + steps[i];
+      log.appendChild(line);
+      log.scrollTop = log.scrollHeight;
+      i++;
+    } else {
+      clearInterval(interval);
+      fetch("/workstations/configure/" + id, { method: "POST" });
+      btn.textContent = "✓ Configured";
+      btn.style.background = "#1a7a4a";
+      btn.style.color = "#fff";
+    }
+  }, 600);
+}
+</script>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ITOps ServiceDesk — Home & Co</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <span class="logo-icon">⚙</span>
+      <div>
+        <div class="logo-title">ITOps</div>
+        <div class="logo-sub">Home &amp; Co</div>
+      </div>
+    </div>
+    <nav>
+      <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">
+        <span class="nav-icon">▦</span> Dashboard
+      </a>
+      <a href="/tickets" class="nav-link {% if '/tickets' in request.path %}active{% endif %}">
+        <span class="nav-icon">◈</span> Tickets
+      </a>
+      <a href="/users" class="nav-link {% if '/users' in request.path %}active{% endif %}">
+        <span class="nav-icon">◉</span> User Onboarding
+      </a>
+      <a href="/workstations" class="nav-link {% if '/workstations' in request.path %}active{% endif %}">
+        <span class="nav-icon">▣</span> Workstations
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-badge">
+        <div class="avatar">AK</div>
+        <div>
+          <div class="user-name">Akash Shaw</div>
+          <div class="user-role">IT Systems Student</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <h1 class="page-title">{% block page_title %}{% endblock %}</h1>
+      <div class="topbar-right">
+        <span class="status-dot"></span>
+        <span class="status-text">Systems operational</span>
+      </div>
+    </header>
+    <div class="content">
+      {% block content %}{% endblock %}
+    </div>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

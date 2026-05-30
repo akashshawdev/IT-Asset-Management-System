@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block page_title %}Dashboard{% endblock %}
+{% block content %}
+
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-label">Total Tickets</div>
+    <div class="stat-value">{{ total }}</div>
+  </div>
+  <div class="stat-card stat-open">
+    <div class="stat-label">Open</div>
+    <div class="stat-value">{{ open_t }}</div>
+  </div>
+  <div class="stat-card stat-inprog">
+    <div class="stat-label">In Progress</div>
+    <div class="stat-value">{{ inprog }}</div>
+  </div>
+  <div class="stat-card stat-resolved">
+    <div class="stat-label">Resolved</div>
+    <div class="stat-value">{{ resolved }}</div>
+  </div>
+  <div class="stat-card stat-pending">
+    <div class="stat-label">Pending Onboarding</div>
+    <div class="stat-value">{{ users_pending }}</div>
+  </div>
+</div>
+
+<div class="section-row">
+  <div class="card flex-2">
+    <div class="card-header">
+      <h2>Recent Tickets</h2>
+      <a href="/tickets" class="link-small">View all →</a>
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Category</th>
+          <th>Priority</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for t in recent_tickets %}
+        <tr>
+          <td class="muted">#{{ t.id }}</td>
+          <td>{{ t.title }}</td>
+          <td><span class="badge badge-cat">{{ t.category }}</span></td>
+          <td><span class="badge badge-priority-{{ t.priority | lower }}">{{ t.priority }}</span></td>
+          <td><span class="badge badge-status-{{ t.status | lower | replace(' ', '-') }}">{{ t.status }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card flex-1">
+    <div class="card-header">
+      <h2>Quick Actions</h2>
+    </div>
+    <div class="quick-actions">
+      <a href="/tickets" class="action-btn">
+        <span class="action-icon">+</span>
+        <span>New Ticket</span>
+      </a>
+      <a href="/users" class="action-btn">
+        <span class="action-icon">+</span>
+        <span>Onboard User</span>
+      </a>
+      <a href="/workstations" class="action-btn">
+        <span class="action-icon">▣</span>
+        <span>Configure Workstation</span>
+      </a>
+    </div>
+
+    <div class="card-header" style="margin-top:1.5rem">
+      <h2>Resolution Rate</h2>
+    </div>
+    <div class="resolution-bar-wrap">
+      {% set pct = ((resolved / total) * 100) | round | int if total > 0 else 0 %}
+      <div class="resolution-label">
+        <span>{{ pct }}% resolved</span>
+        <span class="muted">{{ resolved }}/{{ total }} tickets</span>
+      </div>
+      <div class="resolution-bar">
+        <div class="resolution-fill" style="width: {{ pct }}%"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
