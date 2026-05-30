@@ -2,16 +2,16 @@
 
 A lightweight internal IT support and workstation management system built to streamline operational workflows at small-to-medium offices.
 
-Built as a personal project alongside my MSc in Software Engineering, inspired by repetitive pain points in IT operations: slow onboarding, manual ticket tracking, and unstructured workstation setup.
+Built as a personal project alongside my MSc in Software Engineering, inspired by repetitive pain points in IT operations: slow onboarding, manual ticket tracking and unstructured workstation setup.
 
 ---
 
 ## Features
 
-- **Ticket Management** - Submit, filter, and resolve IT support tickets. Track by category, priority, and assignee.
-- **User Onboarding** - Register new employees, assign system permissions, and link workstations in one step.
+- **Ticket Management** - Submit, filter and resolve IT support tickets. Track by category, priority and assignee.
+- **User Onboarding** - Register new employees, assign system permissions and link workstations in one step.
 - **Workstation Configuration** - Track all office devices and run simulated automated setup scripts per device.
-- **Dashboard** - Overview of open/resolved tickets, pending onboardings, and resolution rate.
+- **Dashboard** - Overview of open/resolved tickets, pending onboardings and resolution rate.
 
 ---
 
@@ -69,7 +69,7 @@ itops-servicedesk/
 
 ## Screenshots
 
-> Dashboard, Tickets, User Onboarding, and Workstation pages - all functional with real SQLite persistence.
+> Dashboard, Tickets, User Onboarding and Workstation pages - all functional with real SQLite persistence.
 
 ---
 
