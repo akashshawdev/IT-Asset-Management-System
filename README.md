@@ -28,7 +28,7 @@ Built as a personal project alongside my MSc in Software Engineering, inspired b
 ## Setup
 
 ```bash
-git clone https://github.com/yourusername/itops-servicedesk
+git clone https://github.com/akashshawdev/itops-servicedesk
 cd itops-servicedesk
 pip install flask
 python app.py
