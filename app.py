@@ -272,7 +272,7 @@ def api_get_ticket(tid):
 
 @app.route("/api/tickets", methods=["POST"])
 def api_create_ticket():
-    data = request.get_json()
+    data = request.get_json(force=True, silent=True) or {}
     if not data:
         return jsonify({"error": "Request body must be JSON"}), 400
     title = data.get("title", "").strip()
@@ -296,7 +296,7 @@ def api_create_ticket():
 
 @app.route("/api/tickets/<int:tid>/status", methods=["PATCH"])
 def api_update_ticket_status(tid):
-    data = request.get_json()
+    data = request.get_json(force=True, silent=True) or {}
     if not data:
         return jsonify({"error": "Request body must be JSON"}), 400
     status = data.get("status", "").strip()
@@ -326,7 +326,7 @@ def api_get_users():
 
 @app.route("/api/users/onboard", methods=["POST"])
 def api_onboard_user():
-    data = request.get_json()
+    data = request.get_json(force=True, silent=True) or {}
     if not data:
         return jsonify({"error": "Request body must be JSON"}), 400
     name = data.get("name", "").strip()
@@ -361,7 +361,7 @@ def api_get_assets():
 
 @app.route("/api/assets", methods=["POST"])
 def api_create_asset():
-    data = request.get_json()
+    data = request.get_json(force=True, silent=True) or {}
     if not data:
         return jsonify({"error": "Request body must be JSON"}), 400
     name = data.get("name", "").strip()
