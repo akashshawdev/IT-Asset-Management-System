@@ -71,6 +71,13 @@ def init_db():
         created_at TEXT NOT NULL
     )''')
 
+
+    # Migration: add columns if they dont exist
+    try:
+        c.execute("ALTER TABLE tickets ADD COLUMN user_email TEXT DEFAULT """)
+        conn.commit()
+    except:
+        pass
     # Seed tickets
     c.execute("SELECT COUNT(*) FROM tickets")
     if c.fetchone()[0] == 0:
